@@ -3,7 +3,12 @@ from datetime import datetime
 
 
 def logstamp_to_datetime(datestr):
-    return datetime.datetime.strptime(datestr, '%Y-%m-%dT%H:%M:%S')
+    # Parse the date string into separate year, month, day, hour, minute, and second components
+    year, month, day, hour, minute, second = map(
+        int, datestr.replace("T", "-").replace(":", "-").split("-"))
+
+    # Create and return a new datetime object
+    return datetime(year=year, month=month, day=day, hour=hour, minute=minute, second=second)
 
 
 # >>>> The code below will call your function and print the results
